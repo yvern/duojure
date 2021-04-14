@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" content="text/html" http-equiv="Content-Type" />
+		<meta content="It's 2021 people.  Why aren't you programming in Clojure?  It's time. - Uncle Bob Martin" name="description" />
+		<title>Clojure Introduction</title>
+		<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/sidenotes.css" />
+ 		<link rel="stylesheet" type="text/css" href="css/shCore.css" />
+		<link rel="stylesheet" type="text/css" href="css/shThemeSidenotes.css" />
+		<style type="text/css">.syntaxhighlighter{overflow:hidden !important;}</style>
+		<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="js/xregexp-min.js"></script>
+		<script type="text/javascript" src="js/shCore.js"></script>
+		<script type="text/javascript" src="js/shBrushClojure.js"></script>
+	</head>
+	<body>
+		<div class="gridlayout">
+			<div class="box header">
+				<h1 class="project-name">language.general</h1>
+				<a class="toc-link" href="index.html">table of contents</a>
+			</div>
+			<div class="box section">
+				
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(ns language.general)</pre>
+			</div>
+						<div class="box section span">
+				<h2>Language is language, but not just that</h2>
+			</div>
+						<div class="box section">
+				
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(def cool-message
+  &quot;language in isolation is only part of the story:
+   history, cultural immersion,
+   learning communication patterns
+   and even thought models are what make it all worth it!&quot;)</pre>
+			</div>
+						<div class="box section span">
+				<h3>Language Family, Dialects and <a href='https://en.wikipedia.org/wiki/Sprachbund'>Sprachbund</a></h3>
+			</div>
+						<div class="box section span">
+				<p>clojure didn't just appear out of nowhere,  it is just a branch of a large and ancient familiy of languages: the LISP family.</p><p>as such, it <del>inherits</del> adheres to many features from its ancestors,  from overall look and feel to semantics and behaviour</p>
+			</div>
+						<div class="box section span">
+				<h3>The LISP alphabet</h3>
+			</div>
+						<div class="box section span">
+				<p>the written form of clojure is quite daunting to the uninitiated due to the delimiters,</p><p>much like many languages with consonant clusters.</p><p>so dont be afraid, it is quite fast to get used too, and soon you will see it actually helps you delimit <del>scopes</del> sentences more easily!</p>
+			</div>
+						<div class="box section">
+				<p>that said, in clojure you can use in strings even emojis as identifiers! try it out at a repl:</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(def hard-rockers! [&quot;👩‍🎤&quot; &quot;🧑‍🎤&quot; &quot;👨‍🎤&quot;])
+(def 🆔 identity)</pre>
+			</div>
+						<div class="box section span">
+				<p>since you can use a wide variety of characters for naming things, in clojure we tend to give maning to the char usage:</p>
+			</div>
+						<div class="box section">
+				<ul><li><code>even?</code> is not only a valid name,but is a clojure function! names endend in <code>?</code> usually mean a predicate, something that takes a value and returns a boolean, like answering a question</li></ul>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(even? 2) ; yes! it is true</pre>
+			</div>
+						<div class="box section">
+				<ul><li><code>assoc!</code> the 'bang' at the end is to call your attention,because this results in a <em>mutation</em>. sometimes also used on side-effecting functions. it is good practice in FP to keep track of those, and naming helps</li></ul>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(assoc! (transient {}) :a 1)</pre>
+			</div>
+						<div class="box section span">
+				<h3>Learning to communicate, not just to speak</h3>
+			</div>
+						<div class="box section span">
+				<p>some languages work like a sentence in german:</p><p>you need to hear it to the end to actually get it (and it may even be rude to interrupt the <del>compiler</del> speaker!).</p>
+			</div>
+						<div class="box section span">
+				<p>this usually frees up the order of your meaningful pieces,</p><p>so you can put emphasis on what you think matters the most,</p><p>like putting your <code>main</code> point on top and pushing <del>utils</del> details to the end.</p>
+			</div>
+						<div class="box section">
+				<p>clojure, on the other hand,  needs you to put things on the right order of dependency,</p><p>because it works more like a conversation in japanese:</p><p>you communicate a small pience of information (a top level s-exp sent to the repl)</p><p>and expect some sort of ack (hai!) from the listener.</p><p>so that the prefered way of developing a <del>project</del> conversation is through the famed REPL Driven Development.</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(comment
+  (defn my-func [x] (my-add x 2))
+  (defn my-add [y z] (+ y z)))</pre>
+			</div>
+						<div class="box section span">
+				<p>now that we know about ordering, we can proceed to <a href='language.grammar.morphology.html'>shape and content</a></p>
+			</div>
+			
+			<div class="box footer">
+				Generated by <a href="https://github.com/captain-porcelain/sidenotes">Sidenotes</a>.
+				&nbsp;&nbsp;
+				Syntax highlighting provided by Alex Gorbatchev's <a href="http://alexgorbatchev.com/SyntaxHighlighter/">SyntaxHighlighter</a>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/app.js"></script>
+	</body>
+</html>

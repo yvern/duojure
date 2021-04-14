@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" content="text/html" http-equiv="Content-Type" />
+		<meta content="It's 2021 people.  Why aren't you programming in Clojure?  It's time. - Uncle Bob Martin" name="description" />
+		<title>Clojure Introduction</title>
+		<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/sidenotes.css" />
+ 		<link rel="stylesheet" type="text/css" href="css/shCore.css" />
+		<link rel="stylesheet" type="text/css" href="css/shThemeSidenotes.css" />
+		<style type="text/css">.syntaxhighlighter{overflow:hidden !important;}</style>
+		<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="js/xregexp-min.js"></script>
+		<script type="text/javascript" src="js/shCore.js"></script>
+		<script type="text/javascript" src="js/shBrushClojure.js"></script>
+	</head>
+	<body>
+		<div class="gridlayout">
+			<div class="box header">
+				<h1 class="project-name">language.grammar.morphology</h1>
+				<a class="toc-link" href="index.html">table of contents</a>
+			</div>
+			<div class="box section">
+				
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(ns language.grammar.morphology)</pre>
+			</div>
+						<div class="box section span">
+				<h1>Grammar</h1>
+			</div>
+						<div class="box section span">
+				<p>because we humans just love ourselves some rules</p>
+			</div>
+						<div class="box section span">
+				<h2>Morphology</h2>
+			</div>
+						<div class="box section span">
+				<p>or: what makes up a <i>word</i>?</p>
+			</div>
+						<div class="box section span">
+				<p>usually the datatypes you will find laying around</p><p>will be the ones contemplated by <a href='https://github.com/edn-format/edn'>edn</a>:</p><p>(usually called a <i>form</i>)</p>
+			</div>
+						<div class="box section">
+				<p>booleans and nil</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">'(true false nil)</pre>
+			</div>
+						<div class="box section">
+				<p>numbers!</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">'(1 2 3/4 5.75 7865874567M)</pre>
+			</div>
+						<div class="box section">
+				<p>strings, only double quoted ones</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">'(&quot;you&quot; &quot;already&quot; &quot;know \\&quot;them\\&quot;&quot;)</pre>
+			</div>
+						<div class="box section">
+				<p>keywords</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">'(:like-strings! :but'internalized :person/name)</pre>
+			</div>
+						<div class="box section">
+				<p>ok, those are familiar, but being a lisp and <i>very</i> <code>meta</code>, clojure needs: symbols!</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">'(a b #'map reduce clojure.core/future)</pre>
+			</div>
+						<div class="box section span">
+				
+			</div>
+						<div class="box section span">
+				<h2>Mix and match:</h2><p>sometimes we need to combine them to make a meaningful piece</p>
+			</div>
+						<div class="box section">
+				<p>our shopping list, for when we want to look up by the first thing, use it and keep the rest for later</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(def my-shopping-list (list :carrots :beets :lettuce))</pre>
+			</div>
+						<div class="box section">
+				<p>got to the store, find the last week grocery list! let's exhaust it before going on for the new one</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(concat '(:bananas :apples) my-shopping-list)</pre>
+			</div>
+						<div class="box section">
+				<p>yay just bought the first thing, how do i cross it off if i cant <del>mutate</del> change the list???</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(def already-bought-carrots (pop my-shopping-list))</pre>
+			</div>
+						<div class="box section">
+				<p>a mapping from english words to german ones</p><p>when given a value we want to find the matching one</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(def en-&gt;de {&quot;dog&quot; &quot;Hun&quot; &quot;house&quot; &quot;Haus&quot;})</pre>
+			</div>
+						<div class="box section">
+				<p>how to translate? (yes it is just like a function!)</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(en-&gt;de &quot;house&quot;)</pre>
+			</div>
+						<div class="box section">
+				<p>learned a new word?</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(assoc en-&gt;de &quot;beer&quot; &quot;Bier&quot;)</pre>
+			</div>
+						<div class="box section">
+				<p>oh no its not Hun, its Hund, how to fix it?</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(update en-&gt;de &quot;dog&quot; str &quot;d&quot;)</pre>
+			</div>
+						<div class="box section">
+				<p>had so much beer that forgot about house?</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(dissoc en-&gt;de &quot;house&quot;)</pre>
+			</div>
+						<div class="box section">
+				<p>building and learning and growing together</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(defn learn-from-friend [friends-knawledge]
+  (merge en-&gt;de friends-knawledge))</pre>
+			</div>
+						<div class="box section">
+				<p>a vector of the amount of cars we sold by day of the month</p><p>for when we want to access an arbitrary day, but we may also want to iterate over them, to get the sum over the month for example</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(def jan-sales
+  [2 3 5 8 5 3 7
+   0 4 2 2 3 6 4
+   9 2 3 5 8 5 3
+   7 0 4 2 2 3 6
+   4 9])</pre>
+			</div>
+						<div class="box section">
+				<p>our average of cars sold by day would be:</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(/ (reduce + jan-sales)
+   (count jan-sales))</pre>
+			</div>
+						<div class="box section">
+				<p>and on a given day? (yay consistency)</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(jan-sales 12)</pre>
+			</div>
+						<div class="box section">
+				<p>what about just on the last day?</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(peek jan-sales)</pre>
+			</div>
+						<div class="box section">
+				<p>the set suits in a deck, in portuguese</p><p>we dont really care about duplicates,  so it doesnt matter if we have 13 of each one,  we just care if they are there or not </p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(def naipes #{:copas :espadas :ouros :paus})</pre>
+			</div>
+						<div class="box section">
+				<p>is <code>:cat</code> a valid suit?</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(naipes :cat) ; no 😿</pre>
+			</div>
+						<div class="box section span">
+				<p>these are the ways to convey information in clojure, and as you can see, all of them can behave as functions as well, but not only that:<h2></h2></p><p><p style= "text-align: center"><img src="img/code-is-data-data-is-code.jpeg" width="40%"/></p></p><p>yes! if you payed attention, you may have noticed the code examples <i>also match</i> that same syntax! that's because, well, in clojure <i>your code</i> is just <i>a data structuce</i>, a list to be precise</p><p>speaking of which, lets hop over to <a href='language.grammar.syntax.html'>syntax</a></p>
+			</div>
+			
+			<div class="box footer">
+				Generated by <a href="https://github.com/captain-porcelain/sidenotes">Sidenotes</a>.
+				&nbsp;&nbsp;
+				Syntax highlighting provided by Alex Gorbatchev's <a href="http://alexgorbatchev.com/SyntaxHighlighter/">SyntaxHighlighter</a>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/app.js"></script>
+	</body>
+</html>

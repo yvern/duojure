@@ -1,0 +1,5 @@
+{:paths ["."]
+ :aliases {:sidenotes
+           {:extra-deps {sidenotes/sidenotes {:mvn/version "RELEASE"}}
+            :replace-paths ["course"]
+            :main-opts  ["-m" "sidenotes.core"]}}}
