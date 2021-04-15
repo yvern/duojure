@@ -1,4 +1,5 @@
-(ns language.vocabulary.idioms)
+(ns language.vocabulary.idioms
+  (:require [clojure.test :refer [deftest is are run-tests]]))
 
 ;; # Idioms and common phrases
 
@@ -63,6 +64,23 @@
        (reduce +)))
 
 ;; we could even go deeper into a cool feature called `transducers`, but that is a bit beyond what you need to get by on your first trip
+
+;; but how can we be sure something works?
+;; testing of course!
+(deftest euler-problem-1
+  (is (= 23 (euler1-loop-recur 10)))
+  (is (= 23 (euler1-for-macro 10)))
+  (is (= 23 (euler1-threading-sequences 10))))
+  
+;; or you can generic assertions
+(deftest euler-problem-1-but-cooler
+  (are [solve] (= 23 (solve 10))
+    euler1-loop-recur
+    euler1-for-macro
+    euler1-threading-sequences))
+
+;; and you can run them programatically with:
+(run-tests)
 
 ;; there is still more to learn, so on to an exercise!
 

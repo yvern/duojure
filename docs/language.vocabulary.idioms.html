@@ -24,7 +24,8 @@
 				
 			</div>
 			<div class="box section">
-				<pre class="brush: clojure">(ns language.vocabulary.idioms)</pre>
+				<pre class="brush: clojure">(ns language.vocabulary.idioms
+  (:require [clojure.test :refer [deftest is are run-tests]]))</pre>
 			</div>
 						<div class="box section span">
 				<h1>Idioms and common phrases</h1>
@@ -91,6 +92,31 @@
 			</div>
 						<div class="box section span">
 				<p>we could even go deeper into a cool feature called <code>transducers</code>, but that is a bit beyond what you need to get by on your first trip</p>
+			</div>
+						<div class="box section">
+				<p>but how can we be sure something works? testing of course!</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(deftest euler-problem-1
+  (is (= 23 (euler1-loop-recur 10)))
+  (is (= 23 (euler1-for-macro 10)))
+  (is (= 23 (euler1-threading-sequences 10))))</pre>
+			</div>
+						<div class="box section">
+				<p>or you can generic assertions</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(deftest euler-problem-1-but-cooler
+  (are [solve] (= 23 (solve 10))
+    euler1-loop-recur
+    euler1-for-macro
+    euler1-threading-sequences))</pre>
+			</div>
+						<div class="box section">
+				<p>and you can run them programatically with:</p>
+			</div>
+			<div class="box section">
+				<pre class="brush: clojure">(run-tests)</pre>
 			</div>
 						<div class="box section span">
 				<p>there is still more to learn, so on to an exercise!</p>
