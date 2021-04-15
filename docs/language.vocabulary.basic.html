@@ -39,7 +39,7 @@
 				<p>now clojure remembers it!</p>
 			</div>
 			<div class="box section">
-				<pre class="brush: clojure">(def ine :something) </pre>
+				<pre class="brush: clojure">(def ine :something)</pre>
 			</div>
 						<div class="box section span">
 				<h2>2) <code>if</code>:</h2>
@@ -103,8 +103,9 @@
 			</div>
 			<div class="box section">
 				<pre class="brush: clojure">(loop [n 1]
-  (println (str &quot;for the &quot; n &quot;th time, we are not there yet!&quot;))
-  (recur (inc n)))</pre>
+  (when (&lt; n 10)
+    (println (str &quot;for the &quot; n &quot;th time, we are not there yet!&quot;))
+    (recur (inc n))))</pre>
 			</div>
 						<div class="box section span">
 				<h2>9) <code>fn</code>:</h2>
@@ -123,7 +124,7 @@
   ([] (one-fn-to-rule-them-all
        {:a &quot;this works as&quot;
         :b &quot;default params&quot;}))
-  
+
   ([{:keys [a b c] :as m}] :yay-something)
 
   ([x y w &amp; zs] :wow-much-things))</pre>

@@ -45,31 +45,31 @@
 				<p>booleans and nil</p>
 			</div>
 			<div class="box section">
-				<pre class="brush: clojure">'(true false nil)</pre>
+				<pre class="brush: clojure">(and true false nil)</pre>
 			</div>
 						<div class="box section">
 				<p>numbers!</p>
 			</div>
 			<div class="box section">
-				<pre class="brush: clojure">'(1 2 3/4 5.75 7865874567M)</pre>
+				<pre class="brush: clojure">[1 2 3/4 5.75 7865874567M]</pre>
 			</div>
 						<div class="box section">
 				<p>strings, only double quoted ones</p>
 			</div>
 			<div class="box section">
-				<pre class="brush: clojure">'(&quot;you&quot; &quot;already&quot; &quot;know \\&quot;them\\&quot;&quot;)</pre>
+				<pre class="brush: clojure">(str &quot;you&quot; &quot;already&quot; &quot;know \\&quot;them\\&quot;&quot;)</pre>
 			</div>
 						<div class="box section">
 				<p>keywords</p>
 			</div>
 			<div class="box section">
-				<pre class="brush: clojure">'(:like-strings! :but'internalized :person/name)</pre>
+				<pre class="brush: clojure">[:like-strings! :but'internalized :person/name]</pre>
 			</div>
 						<div class="box section">
 				<p>ok, those are familiar, but being a lisp and <i>very</i> <code>meta</code>, clojure needs: symbols!</p>
 			</div>
 			<div class="box section">
-				<pre class="brush: clojure">'(a b #'map reduce clojure.core/future)</pre>
+				<pre class="brush: clojure">['a 'b #'map reduce clojure.core/future]</pre>
 			</div>
 						<div class="box section span">
 				

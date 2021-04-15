@@ -8,7 +8,7 @@
 ;; ## `def`:
 
 ;; now clojure remembers it!
-(def ine :something) 
+(def ine :something)
 
 
 ;; ## 2) `if`:
@@ -51,8 +51,9 @@
 
 ;; repeat stuff!
 (loop [n 1]
-  (println (str "for the " n "th time, we are not there yet!"))
-  (recur (inc n)))
+  (when (< n 10)
+    (println (str "for the " n "th time, we are not there yet!"))
+    (recur (inc n))))
 
 
 ;; ## 9) `fn`:
@@ -71,7 +72,7 @@
   ([] (one-fn-to-rule-them-all
        {:a "this works as"
         :b "default params"}))
-  
+
   ([{:keys [a b c] :as m}] :yay-something)
 
   ([x y w & zs] :wow-much-things))

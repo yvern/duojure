@@ -15,20 +15,20 @@
 
 
 ;; booleans and nil
-'(true false nil)
+(and true false nil)
 
 ;; numbers!
-'(1 2 3/4 5.75 7865874567M)
+[1 2 3/4 5.75 7865874567M]
 
 ;; strings, only double quoted ones
-'("you" "already" "know \"them\"")
+(str "you" "already" "know \"them\"")
 
 ;; keywords
-'(:like-strings! :but'internalized :person/name)
+[:like-strings! :but'internalized :person/name]
 
 ;; ok, those are familiar, but being a lisp and _very_ `meta`, clojure needs:
 ;; symbols!
-'(a b #'map reduce clojure.core/future)
+['a 'b #'map reduce clojure.core/future]
 
 ;; --
 
