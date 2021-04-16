@@ -2,4 +2,10 @@
  :aliases {:sidenotes
            {:extra-deps {sidenotes/sidenotes {:mvn/version "RELEASE"}}
             :replace-paths ["course"]
-            :main-opts  ["-m" "sidenotes.core"]}}}
+            :main-opts  ["-m" "sidenotes.core"]}
+
+           :new-app
+           {:extra-deps {com.github.seancorfield/clj-new
+                         {:mvn/version "RELEASE"}}
+            :exec-fn clj-new/create
+            :exec-args {:template "app"}}}}

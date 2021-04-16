@@ -6,7 +6,7 @@ You will need a JDK, and as clojure strives for retro-compatibility just as java
 
 If not, you can always
 ```bash
-brew install openjk
+brew install openjdk
 ```
 If on linux, i would recommend [SDKman](https://sdkman.io/)
 
